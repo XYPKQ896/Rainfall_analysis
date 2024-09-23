@@ -32,9 +32,9 @@ data <-
       ),
       origin = "1970-01-01"
     ),
-    rainfall = rgamma(number_of_dates,1,5)
+    rainfall = rgamma(number_of_dates,0.15,0.001)
   )
-
+summary(data$rainfall)
 
 #### Write_csv
 write_csv(data, file = "data/raw_data/simulated.csv")
