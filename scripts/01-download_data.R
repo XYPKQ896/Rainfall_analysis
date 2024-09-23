@@ -26,6 +26,14 @@ datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'
 data <- filter(datastore_resources, row_number()==10) %>% 
   get_resource()
 
+data$date <- as.Date(data$date, format = "%Y-%m-%dT%H:%M:%S")
+
+raw_data <- data %>%
+  group_by(date) %>%
+  summarise(
+    Total_Rainfall = sum(rainfall, na.rm = TRUE)
+  )
+summary(raw_data$Total_Rainfall)
 
 #### Save data ####
-write_csv(data, "data/raw_data/raw_data.csv")
+write_csv(raw_data, "data/raw_data/raw_data.csv")
