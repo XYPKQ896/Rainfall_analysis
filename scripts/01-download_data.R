@@ -24,12 +24,17 @@ datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'
 
 # load the first datastore resource as a sample
 data <- filter(datastore_resources, row_number()==10) %>% 
+  
+  
+  
+  
+  
   get_resource()
 
 data$date <- as.Date(data$date, format = "%Y-%m-%dT%H:%M:%S")
 
 raw_data <- data %>%
-  group_by(date) %>%
+  group_by(date, longitude, latitude) %>%
   summarise(
     Total_Rainfall = sum(rainfall, na.rm = TRUE)
   )
