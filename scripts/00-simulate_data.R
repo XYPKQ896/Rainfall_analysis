@@ -32,7 +32,7 @@ data <-
       ),
       origin = "1970-01-01"
     ),
-    rainfall = rgamma(number_of_dates,0.15,0.001)
+    rainfall = rgamma(number_of_dates,0.03,0.01)
   )
 summary(data$rainfall)
 
