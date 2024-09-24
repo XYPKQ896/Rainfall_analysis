@@ -24,11 +24,17 @@ data <- read_csv(here::here("data/analysis_data/analysis_data.csv"))
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. We use @opendatatoronto.
+  Rainfall is one of most important natural phenomena of the environment. It associates with all humans’ activity. For individuals, we need to decide whether we should take an umbrella this day. For restaurants, how much food they should prepare every morning. A rainy day can’t attract the same number of customers as a sunny day. For farmers, they need to decide the best time to plant or harvest. City authorities should prepare for the possible heavy rain in the future.
 
-The remainder of this paper is structured as follows. @sec-data....
+  As a result, this paper purposes to understand the rainfall and contribute to the agriculture, environment protection and city planning. We use data from @opendatatoronto in order to disclose the relationship between precipitation, locations and seasons. 
 
+The remainder of this paper is structured as follows. 
 
+@sec-data Data
+
+@sec-model Model
+
+@sec-model_set-up Model set-up
 
 # Data {#sec-data}
 
@@ -49,11 +55,12 @@ ggplot(daily, aes(x = date, y = Total_Rainfall)) +
 
 In this figure, the location is fixed as (longitude=-79.4781121, latitude=43.6476803). In order to find the rainfall everyday from January to September, daily precipitation shows rainfall in mm.
 
-And also planes (@fig-monthly). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
+And also planes (@fig-monthly). Daily precipitation is not able to find a rule for the rainfall. Monthly precipitation gathers elements in daily precipitation.
 
 ```{r}
 #| label: fig-monthly
-#| fig-cap: Relationship between wing length and width
+#| fig-cap: Monthly Precipitation
+#| fig-pos: H
 #| echo: false
 #| warning: false
 #| message: false
@@ -72,30 +79,27 @@ ggplot(monthly, aes(x = month, y = monthly_rainfall)) +
 
 ```
 
-Talk way more about it. 
+Variables in two figures are the following:
+  Rainfall: precipitation measured by rain gauge equipment (mm)
+  Date: Every day from January to September.
+  Month: Every month from January to September.
 
 
+# Model{#sec-model}
 
-# Model
-
-The goal of our modelling strategy is twofold. Firstly,...
+The goal of our modelling strategy is twofold. Firstly,
 
 Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
 
-## Model set-up
+## Model set-up{#sec-model_set-up}
 
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
+Define $y$ as the total rainfall in 2024. Then $x_1$ is the longitude and $x_2$ is the latitude.  
 
 \begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
+y = ax_1 +bx_2 + e
 \end{align}
 
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
+We run the model in R [@citeR].
 
 
 ### Model justification
@@ -107,37 +111,28 @@ We can use maths by including latex between dollar signs, for instance $\theta$.
 
 # Results
 
-Our results are summarized in @tbl-modelresults.
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-
-```
-
 ```{r}
 #| echo: false
 #| eval: true
 #| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
+#| tbl-cap: "Explanatory models of precipitation based on longitude and latitude"
 #| warning: false
+#| include: false
 
-
+modeldata <- data %>% group_by(longitude, latitude) %>% summarize(year_rainfall = sum(Total_Rainfall))
+lm(year_rainfall ~ longitude + latitude, modeldata)
 ```
 
-
+\begin{align} 
+y = -389.9x_1 +934.7x_2 -71080.4
+\end{align}
 
 
 # Discussion
 
 ## First discussion point {#sec-first-point}
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+When talk about rainfall, one purpose is that the rain is only formed by (). It means that the precipitation everyday is totally random just as the data which we simulated in figure 1. From our daily life, when today is rain, the precipitation is larger than not rainy day. The data we simulated shows that, the rainy days are random choose. We are not able to find any rules from it. However, in the real data which gets from opendatatoronto (figure2), it is totally wrong. Although it is same that some days rain and some days sunny, July seems to have more days rainy and also the precipitation is higher than other months. In order to find more about it, the bar plot in (figure 3) merge every days in to months. So we can see the total precipitation every month. We can easily find that July is higher than other weeks. 
 
 ## Second discussion point
 
