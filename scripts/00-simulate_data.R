@@ -20,7 +20,7 @@ start_date <- as.Date("2024-01-01")
 end_date <- as.Date("2024-03-15")
 
 # Set the number of random dates you want to generate
-number_of_dates <- 100
+number_of_dates <- 1000
 
 data <-
   tibble(
