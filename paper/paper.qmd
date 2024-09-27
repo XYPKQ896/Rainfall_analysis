@@ -60,6 +60,22 @@ The remainder of this paper is structured as follows.
 
 # Data {#sec-data}
 
+Simulated data is of daily precipitation(@fig-simulate) which considers that rainfall is randomly every day.
+
+```{r}
+#| label: fig-simulate
+#| fig-cap: Simulate Precipitation
+#| echo: false
+
+simulatedata <- read.csv(here::here("data/raw_data/simulated.csv"))
+simulatedata$dates <- as.Date(simulatedata$dates)
+ggplot(simulatedata, aes(x = dates, y = rainfall)) +
+  geom_line(color = "blue") +
+  labs(title = "Simulated Daily Precipitation", 
+       x = "Date", 
+       y = "Rainfall (mm)")
+```
+
 Some of our data is of daily precipitation (@fig-daily), from @opendatatoronto.
 
 ```{r}
@@ -112,7 +128,8 @@ Variables in two figures are the following:
 The goal of our modelling strategy is twofold. Firstly, it tells the relationship between precipitation and longitude is positive or negative. Secondly, it tells the relationship between precipitation and latitude is positive or negative.
 
 Here we briefly describe the linear regression model used to investigate the effects of longitude and latitude on precipitation.
-Background details and diagnostics are included in [Appendix -@sec-model-details].
+
+More information are included in [Appendix -@sec-model-details].
 
 ## Model set-up{#sec-model_set-up}
 
@@ -127,9 +144,8 @@ We run the model in R [@citeR].
 
 ### Model justification{#sec-model_justification}
 
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
+We expect a positive relationship between the precipitation and coordinates. In particular, increasing longitude or increasing latitude may cause increasing precipitation. $y$ represents precipitation in mm. $x_1$ represents longitude and $x_2$ represents latitude. The coefficients a and b are used to represents the change of precipitation by longitude and latitude.
 
-We can use maths by including latex between dollar signs, for instance $\theta$.
 
 
 # Results{#sec-results}
@@ -153,17 +169,22 @@ y = -389.9x_1 +934.7x_2 -71080.4
 
 # Discussion{#sec-discussion}
 
-## First discussion point {#sec-first-point}
+##First discussion point {#sec-first-point}
 
-When talk about rainfall, one purpose is that the rain is only formed by (). It means that the precipitation everyday is totally random just as the data which we simulated in figure 1. From our daily life, when today is rain, the precipitation is larger than not rainy day. The data we simulated shows that, the rainy days are random choose. We are not able to find any rules from it. However, in the real data which gets from opendatatoronto (figure2), it is totally wrong. Although it is same that some days rain and some days sunny, July seems to have more days rainy and also the precipitation is higher than other months. In order to find more about it, the bar plot in (figure 3) merge every days in to months. So we can see the total precipitation every month. We can easily find that July is higher than other weeks. 
+When talking about rainfall, one purpose is that the rain is only formed by (). It means that the precipitation every day is totally random just like the data which we simulated in (@fig-simulate). From our daily life, if today is rainy, the precipitation is greater than not rainy day. The data we simulated shows that, the rainy days are randomly choose. We are not able to find any rules from it. However, in the real data which comes from @opendatatoronto (@fig-daily), it is totally wrong. Although it is same that some days rain and some days sunny, July seems to have more rainy days and also the precipitation is higher than other months. To find more about it, the bar chart in (@fig-monthly) merges all days into months. So we can see the total precipitation for each month. We can easily see that July is higher than other weeks.
+Although precipitation seems to be random every day, monthly data shows that the rainfall during summer is higher than other seasons.
 
 ## Second discussion point{#sec-second-point}
 
+The regression model (@sec-results) shows that there are positive correlation between precipitation and longitude. Also,there are positive correlation between precipitation and latitude. This finding means that the north-eastern part of Toronto has a higher precipitation.  By analzeing this finding, the rainfall in the Toronto can be well known. It helps city workers with there work. 
+
 ## Third discussion point{#sec-third-point}
+
+In the first part, the monthly data (@fig-monthly) convinces that precipitation in the Toronto is not random every day. The highly precipitation in July concludes that summer may cause heavier rainfall than other seasons. This may cause by higher temperature in summer. In the second part, the linear regression model proves that North Eastern part of Toronto is more likely to have more precipitation. This may cause by the distance away from Ontario lake.
 
 ## Weaknesses and next steps{#sec-weeknesses}
 
-Weaknesses and next steps should also be included.
+Our data from @opendatatoronto only represent the rainfall data from January 2024 to September 2024. As a result, the change of climate by global warning may cause a change on our analysis. Also, the location is only focused on Toronto. As a result, it may not suitable for all the areas around the world. Next step, the data from past years and different area can be gathered which can support or generalize our assumptions.
 
 \newpage
 
@@ -171,11 +192,25 @@ Weaknesses and next steps should also be included.
 
 # Appendix {-}
 
-
 # Additional data details{#sec-additional}
+Data source: Rain Gauge Locations and Precipitation from @opendatatoronto.
+
+Data variables: 
+
+  date: date of the data (e.g. 2024-1-1)
+  
+  longitude:longitude of the rainfall
+  
+  latitude:latitude of the rainfall
+  
+  Total_Rainfall: Total rainfall that day
 
 # Model details {#sec-model-details}
+$y$: precipitation in mm
 
+$x_1$: longitude
+
+$x_2$: latitude
 
 
 \newpage
