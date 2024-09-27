@@ -3,10 +3,10 @@ title: "How dates and locations affect the rainfall."
 subtitle: "The relationship between dates, locations and rainfall"
 author: 
   - Rui Hu
-thanks: "Code and data are available at: https://open.toronto.ca/"
+thanks: "Code and data are available at: https://github.com/XYPKQ896/Rainfall_analysis"
 date: 09/23/2024
 date-format: MM/DD/YYYY
-abstract: "Rainfall associates with citizens. The purpose is to analysis the rainfall of Toronto. The data about Rain Gauge Locations and Precipitation from opendatatoronto contains locations and rainfall. It shows that the rainfall associates dates and locations."
+abstract: "Rainfall is associated with citizens. The purpose of this paper is to analyze the rainfall of Toronto. The data on rain gauge locations and rainfall from opendatatoronto contains locations and rainfall. It shows that rainfall is associated with dates and locations."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -44,11 +44,11 @@ The remainder of this paper is structured as follows.
 
 @sec-discussion Discussion
 
-@sec-first-point First point
+@sec-first-point Random or regular
 
-@sec-second-point Second point
+@sec-second-point Longitude and latitude
 
-@sec-third-point Third point
+@sec-third-point Conclusion
 
 @sec-weeknesses Weaknesses and next steps
 
@@ -59,6 +59,11 @@ The remainder of this paper is structured as follows.
 \newpage
 
 # Data {#sec-data}
+
+This data is sourced from the website The City of Toronto’s Open Data Portal @opendatatoronto.
+The data is published by @torontowater
+
+All the variables used can be find at @sec-additional
 
 Simulated data is of daily precipitation(@fig-simulate) which considers that rainfall is randomly every day.
 
@@ -150,6 +155,8 @@ We expect a positive relationship between the precipitation and coordinates. In 
 
 # Results{#sec-results}
 
+All the variables can be found at @sec-model-details
+
 ```{r}
 #| echo: false
 #| eval: true
@@ -169,22 +176,22 @@ y = -389.9x_1 +934.7x_2 -71080.4
 
 # Discussion{#sec-discussion}
 
-##First discussion point {#sec-first-point}
+## Random or regular {#sec-first-point}
 
-When talking about rainfall, one purpose is that the rain is only formed by (). It means that the precipitation every day is totally random just like the data which we simulated in (@fig-simulate). From our daily life, if today is rainy, the precipitation is greater than not rainy day. The data we simulated shows that, the rainy days are randomly choose. We are not able to find any rules from it. However, in the real data which comes from @opendatatoronto (@fig-daily), it is totally wrong. Although it is same that some days rain and some days sunny, July seems to have more rainy days and also the precipitation is higher than other months. To find more about it, the bar chart in (@fig-monthly) merges all days into months. So we can see the total precipitation for each month. We can easily see that July is higher than other weeks.
+When talking about rainfall, one purpose is that the rain is only formed by natural factors. It means that the precipitation every day is totally random just like the data which we simulated in (@fig-simulate). From our daily life, if today is rainy, the precipitation is greater than not rainy day. The data we simulated shows that, the rainy days are randomly choose. We are not able to find any rules from it. However, in the real data which comes from @opendatatoronto (@fig-daily), it is totally wrong. Although it is same that some days rain and some days sunny, July seems to have more rainy days and also the precipitation is higher than other months. To find more about it, the bar chart in (@fig-monthly) merges all days into months. So we can see the total precipitation for each month. We can easily see that July is higher than other weeks.
 Although precipitation seems to be random every day, monthly data shows that the rainfall during summer is higher than other seasons.
 
-## Second discussion point{#sec-second-point}
+## Longitude and latitude{#sec-second-point}
 
 The regression model (@sec-results) shows that there are positive correlation between precipitation and longitude. Also,there are positive correlation between precipitation and latitude. This finding means that the north-eastern part of Toronto has a higher precipitation.  By analzeing this finding, the rainfall in the Toronto can be well known. It helps city workers with there work. 
 
-## Third discussion point{#sec-third-point}
+## Conclusion{#sec-third-point}
 
 In the first part, the monthly data (@fig-monthly) convinces that precipitation in the Toronto is not random every day. The highly precipitation in July concludes that summer may cause heavier rainfall than other seasons. This may cause by higher temperature in summer. In the second part, the linear regression model proves that North Eastern part of Toronto is more likely to have more precipitation. This may cause by the distance away from Ontario lake.
 
 ## Weaknesses and next steps{#sec-weeknesses}
 
-Our data from @opendatatoronto only represent the rainfall data from January 2024 to September 2024. As a result, the change of climate by global warning may cause a change on our analysis. Also, the location is only focused on Toronto. As a result, it may not suitable for all the areas around the world. Next step, the data from past years and different area can be gathered which can support or generalize our assumptions.
+Our data from @opendatatoronto only represent the rainfall data from January 2024 to September 2024. As a result, the change of climate by global warning may cause a change on our analysis.@rain Also, the location is only focused on Toronto. As a result, it may not suitable for all the areas around the world. Next step, the data from past years and different area can be gathered which can support or generalize our assumptions.
 
 \newpage
 
