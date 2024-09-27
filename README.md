@@ -2,7 +2,7 @@
 
 ## Overview
 
-Rainfall is associated with citizens. The purpose of this paper is to analyze the rainfall of Toronto. The data on rain gauge locations and rainfall from opendatatoronto contains locations and rainfall. It shows that rainfall is associated with dates and locations
+Rainfall is associated with citizens. The purpose of this paper is to analyze the rainfall of Toronto. The data on rain gauge locations and rainfall from opendatatoronto contains locations and rainfall. It shows that rainfall is associated with dates and locations.
 
 
 ## File Structure
