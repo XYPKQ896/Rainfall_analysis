@@ -24,12 +24,13 @@ data <- read_csv(here::here("data/analysis_data/analysis_data.csv"))
 
 # Introduction
 
-  Rainfall is one of most important natural phenomena of the environment. It associates with all humans’ activity. For individuals, we need to decide whether we should take an umbrella this day. For restaurants, how much food they should prepare every morning. A rainy day can’t attract the same number of customers as a sunny day. For farmers, they need to decide the best time to plant or harvest. City authorities should prepare for the possible heavy rain in the future.
+  Rainfall is one of the most important natural phenomena of the environment. It is associated with all humans’ activities. For individuals, we need to decide whether we should take an umbrella this day. For restaurants, how much food they should prepare every morning. A rainy day can’t attract the same number of customers as a sunny day. For farmers, they need to decide the best time to plant or harvest. City authorities should prepare for the possible heavy rain in the future.
 
   As a result, this paper purposes to understand the rainfall and contribute to the agriculture, environment protection and city planning. We use data from @opendatatoronto in order to disclose the relationship between precipitation, locations and seasons. 
   
 \newpage
 
+# Content table
 The remainder of this paper is structured as follows. 
 
 @sec-data Data
@@ -178,8 +179,8 @@ y = -389.9x_1 +934.7x_2 -71080.4
 
 ## Random or regular {#sec-first-point}
 
-When talking about rainfall, one purpose is that the rain is only formed by natural factors. It means that the precipitation every day is totally random just like the data which we simulated in (@fig-simulate). From our daily life, if today is rainy, the precipitation is greater than not rainy day. The data we simulated shows that, the rainy days are randomly choose. We are not able to find any rules from it. However, in the real data which comes from @opendatatoronto (@fig-daily), it is totally wrong. Although it is same that some days rain and some days sunny, July seems to have more rainy days and also the precipitation is higher than other months. To find more about it, the bar chart in (@fig-monthly) merges all days into months. So we can see the total precipitation for each month. We can easily see that July is higher than other weeks.
-Although precipitation seems to be random every day, monthly data shows that the rainfall during summer is higher than other seasons.
+When we talk about rainfall, one purpose is that the rain is formed only by natural factors. It means that the precipitation every day is totally random, just like the data we simulated in (@fig-simulate). From our daily life, if today is rainy, the precipitation is greater than not rainy day. The data we simulated shows that the rainy days are chosen randomly. We are not able to find any rules from it. However, in the real data which comes from @opendatatoronto (@fig-daily), it is totally wrong. Although it is the same that some days are rainy and some days are sunny, July seems to have more rainy days and also the precipitation is higher than other months. To find out more, the bar chart in (@fig-monthly) merges all days into months. So we can see the total rainfall for each month. We can easily see that July is higher than other weeks.
+Although the rainfall seems to be random every day, the monthly data shows that the rainfall during summer is higher than other seasons.
 
 ## Longitude and latitude{#sec-second-point}
 
@@ -191,7 +192,7 @@ In the first part, the monthly data (@fig-monthly) convinces that precipitation 
 
 ## Weaknesses and next steps{#sec-weeknesses}
 
-Our data from @opendatatoronto only represent the rainfall data from January 2024 to September 2024. As a result, the change of climate by global warning may cause a change on our analysis.@rain Also, the location is only focused on Toronto. As a result, it may not suitable for all the areas around the world. Next step, the data from past years and different area can be gathered which can support or generalize our assumptions.
+Our data from @opendatatoronto only represent the rainfall data from January 2024 to September 2024. As a result, the change of climate by global warning may cause a change on our analysis. @rain Also, the location is only focused on Toronto. As a result, it may not suitable for all the areas around the world. Next step, the data from past years and different area can be gathered which can support or generalize our assumptions.
 
 \newpage
 
