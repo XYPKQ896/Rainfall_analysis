@@ -17,10 +17,10 @@ set.seed(304)
 
 # Define the start and end date
 start_date <- as.Date("2024-01-01")
-end_date <- as.Date("2024-03-15")
+end_date <- as.Date("2024-09-23")
 
 # Set the number of random dates you want to generate
-number_of_dates <- 1000
+number_of_dates <- 10000
 
 data <-
   tibble(
